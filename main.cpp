@@ -1,4 +1,5 @@
 #include <QCoreApplication>
+#include <QFile>
 #include <iostream>
 using namespace std;
 
@@ -7,12 +8,15 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
     int i;
     int *arr = new int [5];
-    for(i=0; i<5; i++)
-        cin>>arr[i];
-        //arr[i]=qrand() % 13;
-    for(i=0; i < 5; i++)
-        cout<<arr[i];
-    cout<<endl;
+    QFile file("C:\\Users\\yuhoa\\Documents\\Qt\\ezpoker\\file.txt");
+    if (!file.open(QIODevice::Text | QIODevice::ReadOnly)) return 0;
+    QByteArray ba = file.readLine();
+    file.close(); //close file
+    QList<QByteArray> baList = ba.split(' ');
+    for (int i=0;i<baList.size();i++)
+    {
+      arr[i]=baList[i].toInt();
+    }
     int *sc = new int [5];
     sc[0] = arr[0];
     int t=1, t1;
