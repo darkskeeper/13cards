@@ -10,14 +10,8 @@ int main()
 	ifstream fin("INPUT.txt");
 	if (!fin.is_open())
 		cout << "File cannot be opened!\n";
-	fin.getline( filestr, 20 );
-	fin.close();
-	numstr = strtok( filestr, " " );
-	while ( numstr != NULL )
-	{
-		arr[i++] = atoi(numstr);
-		numstr = strtok ( NULL, " " );
-	}
+	for ( i = 0 ; i < 5 ; i++ )
+        fin >> arr[i];
 	int *unic_cards = new int [5];
 	unic_cards[0] = arr[0];
 	int Nun_cards = 1, Nnotun_cards;
