@@ -14,14 +14,18 @@ int main()
         fin >> arr[i];
 	int *unic_cards = new int [5];
 	unic_cards[0] = arr[0];
-	int Nun_cards = 1, Nnotun_cards;
+	int Nun_cards = 1;
+	bool is_card_unic;
 	for ( i = 1 ; i < 5 ; i++ )
 	{
-		Nnotun_cards = 0;
+		is_card_unic = true;
 		for ( int k = 0 ; k < Nun_cards ; k++ )
-			if ( arr[i] != unic_cards[k] )
-				Nnotun_cards++;
-		if ( Nnotun_cards == Nun_cards )
+			if ( arr[i] == unic_cards[k] )
+			{
+				is_card_unic = false;
+				break;
+			}
+		if ( is_card_unic )
 			unic_cards[Nun_cards++] = arr[i];
 	}
 	int Nrepeats;
